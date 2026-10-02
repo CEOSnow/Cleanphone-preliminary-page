@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0b1516" />
+    <meta
+      name="description"
+      content="Cleanphone - Custom Android Experience. Specialized software and device management solutions for enhanced focus and life."
+    />
+    <title>Cleanphone | Custom Android Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --paper: #f3f0e9;
+        --muted: rgba(243, 240, 233, 0.72);
+        --line: rgba(243, 240, 233, 0.2);
+        --accent: #d6c99f;
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+      }
+
+      body {
+        background: #0b1516;
+        color: var(--paper);
+        font-family: "DM Sans", sans-serif;
+      }
+
+      .stage {
+        isolation: isolate;
+        min-height: 100svh;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1.5rem, 6vw, 7rem);
+        background:
+          linear-gradient(90deg, rgba(5, 14, 15, 0.92) 0%, rgba(5, 14, 15, 0.62) 39%, rgba(5, 14, 15, 0.08) 100%),
+          linear-gradient(0deg, rgba(5, 14, 15, 0.72) 0%, transparent 35%),
+          url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2400&q=88") center / cover;
+      }
+
+      .stage::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(circle at 62% 42%, transparent 0 18%, rgba(5, 14, 15, 0.2) 72%);
+        pointer-events: none;
+      }
+
+      header,
+      main,
+      footer { position: relative; z-index: 1; }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--paper);
+        font-family: "Manrope", sans-serif;
+        font-size: 0.88rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .mark {
+        display: grid;
+        width: 2.25rem;
+        height: 2.25rem;
+        place-items: center;
+        border: 1px solid rgba(243, 240, 233, 0.5);
+        border-radius: 50%;
+        color: var(--accent);
+        font-family: "Manrope", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+      }
+
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--muted);
+        font-size: 0.7rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .status::before {
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 50%;
+        background: var(--accent);
+        box-shadow: 0 0 1rem var(--accent);
+        content: "";
+      }
+
+      main { max-width: 42rem; margin: auto 0; padding: 5vh 0 8vh; }
+
+      .eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 0 0 1.5rem;
+        color: var(--accent);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before { width: 2.5rem; height: 1px; background: var(--accent); content: ""; }
+
+      h1 {
+        max-width: 11ch;
+        margin: 0;
+        color: var(--paper);
+        font-family: "Manrope", sans-serif;
+        font-size: clamp(3.3rem, 8vw, 7.3rem);
+        font-weight: 800;
+        letter-spacing: -0.085em;
+        line-height: 0.93;
+      }
+
+      .copy {
+        max-width: 31rem;
+        margin: 2rem 0 0;
+        color: var(--muted);
+        font-size: clamp(1rem, 1.5vw, 1.22rem);
+        line-height: 1.6;
+      }
+
+      footer {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        border-top: 1px solid var(--line);
+        padding-top: 1.25rem;
+        color: rgba(243, 240, 233, 0.52);
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .coordinates { font-variant-numeric: tabular-nums; }
+
+      .imprint { position: relative; }
+
+      .imprint summary {
+        cursor: pointer;
+        list-style: none;
+        transition: color 180ms ease;
+      }
+
+      .imprint summary::-webkit-details-marker { display: none; }
+      .imprint summary:hover { color: var(--paper); }
+
+      .imprint-card {
+        position: absolute;
+        right: 0;
+        bottom: 2.25rem;
+        width: min(19rem, calc(100vw - 3rem));
+        padding: 1.25rem;
+        border: 1px solid var(--line);
+        border-radius: 0.75rem;
+        background: rgba(11, 21, 22, 0.94);
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.28);
+        color: var(--muted);
+        font-size: 0.78rem;
+        letter-spacing: 0;
+        line-height: 1.65;
+        text-transform: none;
+      }
+
+      .imprint-card strong {
+        display: block;
+        margin-bottom: 0.4rem;
+        color: var(--paper);
+        font-family: "Manrope", sans-serif;
+        font-size: 0.9rem;
+      }
+
+      .imprint-card a { color: var(--accent); }
+
+      @media (max-width: 600px) {
+        .stage {
+          padding: 1.5rem;
+          background:
+            linear-gradient(0deg, rgba(5, 14, 15, 0.94) 0%, rgba(5, 14, 15, 0.3) 70%),
+            url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=88") 61% center / cover;
+        }
+
+        .status { font-size: 0.6rem; }
+        main { padding: 3vh 0 7vh; }
+        h1 { max-width: 8ch; font-size: clamp(3.5rem, 16vw, 6rem); }
+        .copy { margin-top: 1.5rem; font-size: 1rem; line-height: 1.5; }
+        footer { font-size: 0.58rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <header>
+        <div class="brand"><span class="mark">CP</span><span>Cleanphone</span></div>
+        <div class="status">In development</div>
+      </header>
+
+      <main>
+        <p class="eyebrow">A clearer way forward</p>
+        <h1>Technology that gives life back.</h1>
+        <p class="copy">
+          Cleanphone &ndash; Custom Android Experience. We build specialized software and device management solutions for enhanced focus and life.
+        </p>
+      </main>
+
+      <footer>
+        <span>Custom Android / Device Management</span>
+        <details class="imprint">
+          <summary>Impressum</summary>
+          <div class="imprint-card">
+            <strong>Cleanphone</strong>
+            Inhaber: Noah Kuse<br />
+            Gr&uuml;nebergstr. 84<br />
+            22763 Hamburg<br /><br />
+            E-Mail: <a href="mailto:contact@cleanphone-mobile.com">contact@cleanphone-mobile.com</a><br />
+            Telefon: <a href="tel:+4915235850113">+49 152 35850113</a>
+          </div>
+        </details>
+      </footer>
+    </div>
+  </body>
+</html>
