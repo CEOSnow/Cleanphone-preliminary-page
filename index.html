@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+  <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,13 +9,23 @@
       content="Cleanphone - Custom Android Experience. Specialized software and device management solutions for enhanced focus and life."
     />
     <title>Cleanphone | Custom Android Experience</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap"
-      rel="stylesheet"
-    />
     <style>
+      @font-face {
+        font-family: "DM Sans";
+        font-style: normal;
+        font-weight: 400 600;
+        font-display: swap;
+        src: url("assets/fonts/dm-sans-latin.woff2") format("woff2");
+      }
+
+      @font-face {
+        font-family: "Manrope";
+        font-style: normal;
+        font-weight: 600 800;
+        font-display: swap;
+        src: url("assets/fonts/manrope-latin.woff2") format("woff2");
+      }
+
       :root {
         color-scheme: dark;
         --paper: #f3f0e9;
@@ -52,7 +62,7 @@
         background:
           linear-gradient(90deg, rgba(5, 14, 15, 0.92) 0%, rgba(5, 14, 15, 0.62) 39%, rgba(5, 14, 15, 0.08) 100%),
           linear-gradient(0deg, rgba(5, 14, 15, 0.72) 0%, transparent 35%),
-          url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2400&q=88") center / cover;
+          url("assets/hero-mountains.jpg") center / cover;
       }
 
       .stage::after {
@@ -206,12 +216,26 @@
 
       .imprint-card a { color: var(--accent); }
 
+      .legal-links {
+        display: inline-flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .legal-links a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 180ms ease;
+      }
+
+      .legal-links a:hover { color: var(--paper); }
+
       @media (max-width: 600px) {
         .stage {
           padding: 1.5rem;
           background:
             linear-gradient(0deg, rgba(5, 14, 15, 0.94) 0%, rgba(5, 14, 15, 0.3) 70%),
-            url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1400&q=88") 61% center / cover;
+            url("assets/hero-mountains.jpg") 61% center / cover;
         }
 
         .status { font-size: 0.6rem; }
@@ -239,17 +263,20 @@
 
       <footer>
         <span>Custom Android / Device Management</span>
-        <details class="imprint">
-          <summary>Impressum</summary>
-          <div class="imprint-card">
-            <strong>Cleanphone</strong>
-            Inhaber: Noah Kuse<br />
-            Gr&uuml;nebergstr. 84<br />
-            22763 Hamburg<br /><br />
-            E-Mail: <a href="mailto:contact@cleanphone-mobile.com">contact@cleanphone-mobile.com</a><br />
-            Telefon: <a href="tel:+4915235850113">+49 152 35850113</a>
-          </div>
-        </details>
+        <div class="legal-links">
+          <a href="datenschutz.html">Datenschutz</a>
+          <details class="imprint">
+            <summary>Impressum</summary>
+            <div class="imprint-card">
+              <strong>Cleanphone</strong>
+              Inhaber: Noah Kuse<br />
+              Gr&uuml;nebergstr. 84<br />
+              22763 Hamburg<br /><br />
+              E-Mail: <a href="mailto:contact@cleanphone-mobile.com">contact@cleanphone-mobile.com</a><br />
+              Telefon: <a href="tel:+4915235850113">+49 152 35850113</a>
+            </div>
+          </details>
+        </div>
       </footer>
     </div>
   </body>
